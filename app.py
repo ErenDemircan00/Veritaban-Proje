@@ -1,9 +1,10 @@
-from flask import Flask
+from flask import Flask, render_template, request
 import mysql.connector
 
 app = Flask(__name__)
 
 @app.route('/')
+
 def index():
     # Veritabanına bağlantı
     connection = mysql.connector.connect(
@@ -19,6 +20,17 @@ def index():
     connection.close()  # Bağlantıyı kapatıyoruz
     
     return str(result)  # Sonuçları ekrana yazdırıyoruz
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+def home():
+    return render_template('index.html')
+
+@app.route('/submit', methods=['POST'])
+def submit():
+    name = request.form.get('name')
+    return f"Hoşgeldiniz, {name}!"
 
 if __name__ == '__main__':
     app.run(debug=True)
