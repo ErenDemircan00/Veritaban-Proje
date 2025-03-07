@@ -1,44 +1,24 @@
-import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
-from flask_jwt_extended import JWTManager
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
-from dotenv import load_dotenv
+import mysql.connector
 
-# Ortam değişkenlerini yükle
-load_dotenv()
+app = Flask(__name__)
 
-# Config sınıfı
-class Config:
-    SQLALCHEMY_DATABASE_URI = os.getenv('DATABASE_URL')
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.getenv('SECRET_KEY')
+@app.route('/')
+def index():
+    # Veritabanına bağlantı
+    connection = mysql.connector.connect(
+        host='localhost',  # Veritabanı sunucusu, localhost yerel bilgisayarınız için
+        user='root',       # Kullanıcı adı, 'root' ise root kullanabilirsiniz
+        password='şifreniz',  # Veritabanı şifrenizi buraya yazın
+        database='veritabanı_adınız'  # Bağlanmak istediğiniz veritabanı adı
+    )
 
-# Flask uygulaması
-class FlaskApp:
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.app.config.from_object(Config)
-        self.db = SQLAlchemy(self.app)
-        self.bcrypt = Bcrypt(self.app)
-        self.jwt = JWTManager(self.app)
-        self.limiter = Limiter(get_remote_address, app=self.app, default_limits=["5 per minute"])
+    cursor = connection.cursor()
+    cursor.execute("SELECT * FROM your_table_name")  # Burada sorgu yapıyoruz
+    result = cursor.fetchall()  # Sorgudan dönen tüm verileri alıyoruz
+    connection.close()  # Bağlantıyı kapatıyoruz
+    
+    return str(result)  # Sonuçları ekrana yazdırıyoruz
 
-    def register_blueprints(self):
-        from routes import api_bp
-        from auth import auth_bp
-        self.app.register_blueprint(api_bp, url_prefix='/api')
-        self.app.register_blueprint(auth_bp, url_prefix='/auth')
-
-    def run(self):
-        with self.app.app_context():
-            self.db.create_all()
-        self.app.run(debug=True)
-
-# Uygulamayı çalıştır
 if __name__ == '__main__':
-    flask_app = FlaskApp()
-    flask_app.register_blueprints()
-    flask_app.run()
+    app.run(debug=True)
