@@ -8,18 +8,18 @@ app = Flask(__name__)
 def index():
     # Veritabanına bağlantı
     connection = mysql.connector.connect(
-        host='localhost',  # Veritabanı sunucusu, localhost yerel bilgisayarınız için
-        user='root',       # Kullanıcı adı, 'root' ise root kullanabilirsiniz
-        password='şifreniz',  # Veritabanı şifrenizi buraya yazın
-        database='veritabanı_adınız'  # Bağlanmak istediğiniz veritabanı adı
+        host='localhost',  
+        user='root',       
+        password='',  
+        database='flask_veritabani'  
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM your_table_name")  # Burada sorgu yapıyoruz
-    result = cursor.fetchall()  # Sorgudan dönen tüm verileri alıyoruz
-    connection.close()  # Bağlantıyı kapatıyoruz
+    cursor.execute("SELECT * FROM Kullanicilar") 
+    result = cursor.fetchall()  
+    connection.close()  
     
-    return str(result)  # Sonuçları ekrana yazdırıyoruz
+    return str(result) 
 
 if __name__ == '__main__':
     app.run(debug=True)

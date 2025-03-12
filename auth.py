@@ -10,7 +10,7 @@ def register():
     data = request.get_json()
     username = data.get('username')
     password = data.get('password')
-    role = data.get('role', 'user')  # Varsayılan olarak "user"
+    role = data.get('role', 'user') 
 
     if not username or not password:
         return jsonify({"error": "Kullanıcı adı ve şifre gereklidir"}), 400
