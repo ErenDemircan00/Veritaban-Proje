@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 
 def index():
-    # Veritabanına bağlantı
+    
     connection = mysql.connector.connect(
         host='localhost',  
         user='root',       
@@ -15,16 +15,13 @@ def index():
     )
 
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM Kullanicilar") 
+    cursor.execute("SELECT * FROM user") 
     result = cursor.fetchall()  
     connection.close()  
     
-    return str(result) 
 
-if __name__ == '__main__':
-    app.run(debug=True)
 
-def home():
+
     return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
