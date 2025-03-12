@@ -6,10 +6,14 @@ from my_routes import api_bp
 
 
 
+<<<<<<< HEAD
 #jwt = JWTManager(app)
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
+=======
+def index(): #app
+>>>>>>> 19cb26927c3440fdfa1f3bbe786e1455f74a0259
     
     app.register_blueprint(api_bp)
     db.init_app(app)
