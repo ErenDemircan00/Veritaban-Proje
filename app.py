@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 
-def index():
+def index(): #app
     
     connection = mysql.connector.connect(
         host='localhost',  
