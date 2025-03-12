@@ -11,7 +11,7 @@ def index():
         host='localhost',  # Veritabanı sunucusu, localhost yerel bilgisayarınız için
         user='root',       # Kullanıcı adı, 'root' ise root kullanabilirsiniz
         password='',  # Veritabanı şifrenizi buraya yazın
-        database='flask_db'  # Bağlanmak istediğiniz veritabanı adı
+        database='flask_veritabani'  # Bağlanmak istediğiniz veritabanı adı
     )
 
     cursor = connection.cursor()
