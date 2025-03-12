@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request
 import mysql.connector
-from flask_sqlalchemy import SQLAlchemy
+from models import db
 from config import Config
 from my_routes import api_bp
 
 
 
 #jwt = JWTManager(app)
-db = SQLAlchemy()
 def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -28,5 +27,5 @@ app = create_app()
 #     name = request.form.get('name')
 #     return f"Hoşgeldiniz, {name}!"
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
