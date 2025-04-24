@@ -25,7 +25,7 @@ Proje kök dizininde .env dosyasını oluşturun:
 ```.env
 MYSQL_HOST=localhost
 MYSQL_USER=root
-MYSQL_PASSWORD=1234
+MYSQL_PASSWORD=your_password
 MYSQL_DB=jwt_users
 SECRET_KEY=your_secret_key
 ```
