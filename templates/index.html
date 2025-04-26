@@ -3,17 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Projesi</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Giriş / Kayıt Sayfası</title>
+    <link rel="stylesheet" href="../static/style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Hoşgeldiniz Flask Projesine!</h1>
-        <form action="/submit" method="POST">
-            <label for="name">İsim:</label>
-            <input type="text" id="name" name="name" required>
-            <button type="submit">Gönder</button>
-        </form>
+    <div class="background-container">
+        <div class="form-container">
+            <h2 class="form-title">MERHABA</h2>
+            <form>
+                <div class="form-group">
+                    <label for="email">E-posta</label>
+                    <input type="email" id="email" name="email" placeholder="E-posta adresiniz" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Şifre</label>
+                    <input type="password" id="password" name="password" placeholder="Şifreniz" required>
+                </div>
+                <div class="buttons">
+                    <button type="button" class="btn btn-register">Kayıt Ol</button>
+                    <button type="submit" class="btn btn-login">Giriş Yap</button>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 </html>
