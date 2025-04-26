@@ -1,48 +1,85 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+body, html {
+    height: 100%;
+    width: 100%;
+}
+
+.background-container {
+    background-image: url('https://m.media-amazon.com/images/I/81VkGqx4DsL._AC_UF1000,1000_QL80_.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+}
+
+.form-title {
     text-align: center;
-    margin-top: 50px;
-}
-
-h1 {
+    margin-bottom: 1.5rem;
     color: #333;
 }
 
-form {
-    margin-top: 20px;
+.form-group {
+    margin-bottom: 1rem;
 }
 
-label {
-    font-size: 18px;
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #333;
 }
 
-input[type="text"] {
+.form-group input {
+    width: 100%;
     padding: 10px;
-    font-size: 16px;
-    width: 50%;
-    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
 }
 
-button {
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.btn {
     padding: 10px 20px;
-    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.btn-register {
     background-color: #4CAF50;
     color: white;
-    border: none;
-    cursor: pointer;
 }
 
-button:hover {
-    background-color: #45a049;
+.btn-login {
+    background-color: #2196F3;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.9;
 }
